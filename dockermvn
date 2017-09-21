@@ -1,0 +1,10 @@
+#!/bin/bash
+PROJECT=dc
+
+#docker run -it \
+#--rm \
+#--name $PROJECT \
+#-v "$PWD":/usr/src/mymaven \
+#-w /usr/src/mymaven maven:3.2-jdk-7 \
+#mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=dc -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+#
