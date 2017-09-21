@@ -4,4 +4,19 @@ node {
   stage('clear work space'){
     cleanWs()
   }
+  stage('clone repo') {
+    git credentialsId: 'githgallo', url: 'https://github.com/hgallo0/cf-dc.git'
+  }
+  stage ('Build') {
+    dir('./dc') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
+      }
+  }
 }
