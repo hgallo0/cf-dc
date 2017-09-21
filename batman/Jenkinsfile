@@ -9,14 +9,8 @@ node {
   }
   stage ('Build') {
     dir('./dc') {
-            steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
-      }
-  }
+#         sh 'mvn -Dmaven.test.failure.ignore=true install' 
+         sh 'mvn package' 
+         }
+    }
 }
