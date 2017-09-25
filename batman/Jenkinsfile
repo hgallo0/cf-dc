@@ -18,7 +18,7 @@ node {
   }
   stage('UPload to Nexus') {
     dir('./dc/') {
-    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'debug', file: 'target/dc-1.0-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
+    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'stage', file: 'target/dc-1.0-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
     }
   }
 }
