@@ -11,6 +11,9 @@ node {
     dir('./dc') {
 //         sh 'mvn -Dmaven.test.failure.ignore=true install' 
          sh 'mvn package' 
-         }
     }
+  }
+  stage('Results') {
+      archive 'target/*.jar'
+  }
 }
