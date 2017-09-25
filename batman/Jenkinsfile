@@ -16,8 +16,8 @@ node {
       archive 'target/*.jar'
   }
   stage('UPload to Nexus') {
-    dir('./cf-hello/') {
-    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'stage', file: 'target/*.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
+    dir('./cf-hello/build/libs/') {
+    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'stage', file: 'java-hello-world-cf-example.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
     }
   }
 }
