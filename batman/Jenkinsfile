@@ -16,4 +16,7 @@ node {
   stage('Results') {
       archive 'target/*.jar'
   }
+  stage('UPload to Nexus') {
+    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'app', file: 'target/*.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.acme.app', nexusUrl: 'http://10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
+  }
 }
