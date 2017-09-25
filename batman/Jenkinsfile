@@ -8,17 +8,16 @@ node {
     git credentialsId: 'githgallo', url: 'https://github.com/hgallo0/cf-dc.git'
   }
   stage ('Build') {
-    dir('./dc') {
-//         sh 'mvn -Dmaven.test.failure.ignore=true install' 
-         sh 'mvn package' 
+    dir('./cf-hello') {
+         sh './gradlew distZip' 
     }
   }
   stage('Results') {
       archive 'target/*.jar'
   }
   stage('UPload to Nexus') {
-    dir('./dc/') {
-    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'stage', file: 'target/dc-1.0-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
+    dir('./cf-hello/') {
+    nexusArtifactUploader artifacts: [[artifactId: 'dc', classifier: 'stage', file: 'target/*.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'nexus', nexusUrl: '10.100.11.164:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hgallotest', version: '1.0.0'
     }
   }
 }
